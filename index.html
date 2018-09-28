@@ -23,13 +23,13 @@
             <p v-show="items.length == 0">Products go here.</p>
             <div
                 class="product"
-                v-for="item in items"
+                v-for="(item, index) in items"
                 :key="item.title">
                 <h4 class="product-title">
                     {{item.title}}
                 </h4>
                 <button class="add-to-cart"
-                    v-on:click="addItem(9.99)">
+                    v-on:click="addItem(index)">
                     Add to cart
                 </button>
             </div>
@@ -37,7 +37,7 @@
         <div class="cart">
             <h2>Shopping Cart</h2>
             <div>
-                <div v-if="total > 0">Total: {{ total }}</div>
+                <div v-if="total > 0">Total: {{ total.toFixed(2) }}</div>
                 <div v-else>No items in the cart.</div>
             </div>
         </div>
