@@ -20,12 +20,25 @@
     </div>
     <div class="main">
         <div class="products">
-            <p>Products go here.</p>
+            <p v-show="items.length == 0">Products go here.</p>
+            <div
+                class="product"
+                v-for="item in items"
+                :key="item.title">
+                <h4 class="product-title">
+                    {{item.title}}
+                </h4>
+                <button class="add-to-cart"
+                    v-on:click="addItem(9.99)">
+                    Add to cart
+                </button>
+            </div>
         </div>
         <div class="cart">
             <h2>Shopping Cart</h2>
             <div>
-                No items in the cart.
+                <div v-if="total > 0">Total: {{ total }}</div>
+                <div v-else>No items in the cart.</div>
             </div>
         </div>
     </div>
@@ -33,6 +46,7 @@
 
 <!-- Scripts -->
 <script src="/reload/reload.js"></script>
+<script src="node_modules/vue/dist/vue.js"></script>
 <script type="text/javascript" src="public/script.js"></script>
 
 </body>
