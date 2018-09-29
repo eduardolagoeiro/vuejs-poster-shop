@@ -17,6 +17,12 @@
 <div id="app">
     <div class="header">
         <h1>Vue.js Poster Store</h1>
+        <p class="error-msg" v-show="searchError">{{searchError}}</p>
+        <form class="searchbar" v-on:submit.prevent="onSubmit()">
+            <input v-bind:disabled="searching" v-model="search" type="text" placeholder="Search for posters">
+            <input v-bind:disabled="searching" type="submit" value="Search" class="btn">
+            <img class="loading-gif" src="/public/loading.gif" alt="loading gif" v-show="searching">
+        </form>
     </div>
     <div class="main">
         <div class="products">
@@ -24,7 +30,7 @@
             <div
                 class="product"
                 v-for="(item, index) in items"
-                :key="item.title">
+                :key="item.id">
                 <h4 class="product-title">
                     {{item.title}}
                 </h4>
@@ -62,6 +68,7 @@
 <!-- Scripts -->
 <script src="/reload/reload.js"></script>
 <script src="node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/vue-resource/dist/vue-resource.js"></script>
 <script type="text/javascript" src="public/script.js"></script>
 
 </body>

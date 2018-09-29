@@ -8,6 +8,14 @@ button:focus, input:focus {
     outline: none;
 }
 
+.error-msg{
+    color: red;
+}
+
+.loading-gif{
+    height: 3em;
+}
+
 .btn {
     background-color: #F08080;
     border-radius: 2px;

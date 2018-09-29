@@ -1,6 +1,9 @@
 new Vue({
   el: '#app',
   data:{
+    search: '',
+    searchError: '',
+    searching: false,
     total: 0,
     items: [
       {title: 'Item 1', value: 1.01},
@@ -10,6 +13,26 @@ new Vue({
     cart: new Map()
   },
   methods:{
+    onSubmit: function(){
+      this.searching = true;
+      this.searchError = '';
+      if(!this.search){
+        this.searchError = 'Type something to search.'
+        this.searching = false;
+        return;
+      }
+      this.$http
+        .get('/search/'.concat(this.search))
+        .then(function(resp){
+          console.log(resp.data)
+          this.search = '';
+          this.searching = false;
+        })
+        .catch( err => {
+          console.log(err);
+          this.searching = false;
+        });
+    },
     addItem: function(index){
       var itemDetail = this.cart.get(this.items[index]);
       if(itemDetail){
