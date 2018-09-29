@@ -26,18 +26,28 @@
     </div>
     <div class="main">
         <div class="products">
-            <p v-show="items.length == 0">Products go here.</p>
+            <div v-show="searched" class="search-results">
+                Found {{items.length}} results for search term {{ searched }}.
+            </div>
             <div
                 class="product"
                 v-for="(item, index) in items"
                 :key="item.id">
-                <h4 class="product-title">
-                    {{item.title}}
-                </h4>
-                <button class="add-to-cart"
-                    v-on:click="addItem(index)">
-                    Add to cart
-                </button>
+                <div>
+                    <div class="product-image">
+                        <img v-bind:src="item.link">
+                    </div>
+                </div>
+                <div>
+                    <h4 class="product-title">
+                        {{item.title}}
+                    </h4>
+                    <p>Price: {{item.score/100 | currency}}</p>
+                    <button class="add-to-cart"
+                        v-on:click="addItem(index)">
+                        Add to cart
+                    </button>
+                </div>
             </div>
         </div>
         <div class="cart">
