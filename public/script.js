@@ -21,7 +21,6 @@ new Vue({
       this.$http
         .get('/search/'.concat(this.search))
         .then(function(resp){
-          console.log(resp.data);
           this.items = resp.data;
           this.searched = this.search;
           this.search = '';
