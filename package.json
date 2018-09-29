@@ -4,7 +4,8 @@
   "description": "Ultimate Vue.js Developers Course - Vue.js Poster Shop",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.js --ignore node_modules/ -e js,html,css"
+    "start": "node index.js --ignore node_modules/ -e js,html,css",
+    "dev": "nodemon ./index.js --ignore node_modules/ -e js,html,css"
   },
   "author": "Anthony Gore <anthony@vuejsdevelopers.com>",
   "repository": {
