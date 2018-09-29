@@ -11,7 +11,6 @@ new Vue({
   },
   methods:{
     addItem: function(index){
-      console.log(this.cart);
       var itemDetail = this.cart.get(this.items[index]);
       if(itemDetail){
         incrementBy(itemDetail, 1, this.items[index].value);
@@ -22,7 +21,6 @@ new Vue({
           value: this.items[index].value
         }, this);
       }
-      this.total += this.items[index].value
     },
     incrementItem: function(item){
       var itemDetail = this.cart.get(item);
@@ -35,7 +33,9 @@ new Vue({
       setItemInCart(this.cart, item, itemDetail, this);
     },
     removeItem: function(item){
-      setItemInCart(this.cart, item, {times:0}, this);
+      var itemDetail = this.cart.get(item);
+      incrementBy(itemDetail, -1*itemDetail.times, item.value);
+      setItemInCart(this.cart, item, itemDetail, this);
     }
   },
   filters: {
@@ -55,6 +55,10 @@ function setItemInCart(cart, item, itemDetail, ctx){
     cart.delete(item);
   }else{
     cart.set(item, itemDetail);
+  }
+  ctx.total = 0;
+  for( var [key, value] of cart){
+    ctx.total += value.value;
   }
   ctx.$forceUpdate();
 }
