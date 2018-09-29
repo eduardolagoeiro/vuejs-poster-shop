@@ -15,7 +15,7 @@ new Vue({
       var itemDetail = this.cart.get(this.items[index]);
       if(itemDetail){
         incrementBy(itemDetail, 1, this.items[index].value);
-        setItemInCart(this.cart, this.items[index], itemDetail);
+        setItemInCart(this.cart, this.items[index], itemDetail, this);
       }else{
         setItemInCart(this.cart, this.items[index], {
           times: 1,
