@@ -2,7 +2,7 @@
 
 I take this course to the end and this is my final vuejs poster shop project.
 
-My final project demo: https://shielded-bastion-30130.herokuapp.com/
+My final project demo: https://fathomless-sands-24711.herokuapp.com/
 
 Source code for the [Ultimate Vue.js Developers Course](http://bit.ly/2mPK8ny).
 
